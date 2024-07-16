@@ -1,0 +1,42 @@
+<!--  Affichage simple avec liste des noms de pokémons -->
+
+<!-- <div *ngIf="pokemonList.length">
+    <h2>Pokemon List</h2>
+    <ul>
+      <li *ngFor="let pokemon of pokemonList">
+        {{ pokemon.name }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!pokemonList.length">
+    Loading...
+  </div> -->
+
+<!--   Affichage en cartes -->
+<div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Search for a Pokémon" 
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()">
+  </div>
+
+
+<div *ngIf="filteredPokemonList.length">
+    <h2>Pokemon List</h2>
+    <div class="card-container">
+        <app-pokedex-card 
+        *ngFor="let pokemon of filteredPokemonList" 
+        [pokemonName]="pokemon.name"
+        (selectPokemon)="onSelectPokemon($event)">
+        </app-pokedex-card>
+    </div>
+</div>
+<div *ngIf="!filteredPokemonList.length">
+    Loading...
+</div>
+<app-pokedex-detail
+ *ngIf="selectedPokemon"
+ [pokemonName]="selectedPokemon"
+ (close)="onCloseDetail()">
+</app-pokedex-detail>
