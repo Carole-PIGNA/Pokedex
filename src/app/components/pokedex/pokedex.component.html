@@ -1,16 +1,3 @@
-<!--  Affichage simple avec liste des noms de pokémons -->
-
-<!-- <div *ngIf="pokemonList.length">
-    <h2>Pokemon List</h2>
-    <ul>
-      <li *ngFor="let pokemon of pokemonList">
-        {{ pokemon.name }}
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="!pokemonList.length">
-    Loading...
-  </div> -->
 
 <!--   Affichage en cartes -->
 <div class="search-container">
@@ -22,15 +9,22 @@
   </div>
 
 
-<div *ngIf="filteredPokemonList.length">
+<div *ngIf="paginatedPokemonList.length">
     <h2>Pokemon List</h2>
     <div class="card-container">
         <app-pokedex-card 
-        *ngFor="let pokemon of filteredPokemonList" 
+        *ngFor="let pokemon of paginatedPokemonList" 
         [pokemonName]="pokemon.name"
         (selectPokemon)="onSelectPokemon($event)">
         </app-pokedex-card>
     </div>
+    <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="goToPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
 </div>
 <div *ngIf="!filteredPokemonList.length">
     Loading...

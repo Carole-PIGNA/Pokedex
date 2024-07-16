@@ -5,7 +5,7 @@
   }
 
   h2{
-    margin-left: 40%;
+    margin-left: 45%;
   }
 
   .search-container {
@@ -14,8 +14,10 @@
   }
   
   .search-container input {
+    margin-top: 20px;
     padding: 10px;
-    width: 300px;
+    width: 500px;
+    text-align: center;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -25,4 +27,24 @@
   .pokemon-details {
     margin-top: 20px; /* Ajoutez cette ligne */
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .pagination button {
+    background-color: #f1f1f1;
+    border: none;
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .pagination button:disabled {
+    background-color: #e1e1e1;
+    cursor: not-allowed;
+  }
+  
   
